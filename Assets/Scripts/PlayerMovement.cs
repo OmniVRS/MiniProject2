@@ -6,10 +6,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    private float speed = 5;
-    private float rotationSpeed = 20;
+    private float speed = 15;
+    private float rotationSpeed = 80;
     private float verticalInput;
     private float horizontalInput;
+    public GameObject projectilePrefab;
+    public GameObject bulletSpawn;
+    private bool collision;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,15 @@ public class PlayerMovement : MonoBehaviour
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        rb.AddForce(Vector3.forward * speed * verticalInput * Time.fixedDeltaTime);
-        transform.Rotate(Vector3.right * rotationSpeed * horizontalInput * Time.fixedDeltaTime);
+        transform.Translate(transform.forward * speed * verticalInput * Time.fixedDeltaTime);
+        transform.Rotate(Vector3.up * rotationSpeed * horizontalInput * Time.fixedDeltaTime);
+    }
+
+    void Update()
+    {
+       if (Input.GetKey(KeyCode.Space))
+       {
+            Instantiate(projectilePrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+       }
     }
 }
