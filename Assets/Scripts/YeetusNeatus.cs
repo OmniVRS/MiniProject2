@@ -5,7 +5,7 @@ using UnityEngine;
 public class YeetusNeatus : MonoBehaviour
 {
     private float forwardForce = 20;
-    private float upForce = 20;
+    private float upForce = 5;
     private Rigidbody rb;
     private float destroyDelay = 4;
 
