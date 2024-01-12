@@ -154,7 +154,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2021494972}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -428,6 +428,7 @@ MonoBehaviour:
   - {fileID: 1122854550}
   - {fileID: 2006302735}
   enemyPrefab: {fileID: 5784943488272690338, guid: c32035681652f94409cb72bf75207b43, type: 3}
+  resetButton: {fileID: 784123831}
   scoreText: {fileID: 62123467}
   gameOverPage: {fileID: 1391303240}
 --- !u!4 &619470410
@@ -701,7 +702,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784123829}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -942,7 +943,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13616003, y: -0.000000017046137, z: 0.000000002342822, w: 0.9906869}
+  m_LocalRotation: {x: 0.13616003, y: 0.000000017046135, z: -0.0000000023428217, w: 0.9906869}
   m_LocalPosition: {x: -1.841759, y: 2.15, z: -10.215996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1301,7 +1302,7 @@ RectTransform:
   m_Children:
   - {fileID: 784123830}
   m_Father: {fileID: 2021494972}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1467,7 +1468,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646919554}
-  m_LocalRotation: {x: 0.13616003, y: -0.000000017046137, z: 0.000000002342822, w: 0.9906869}
+  m_LocalRotation: {x: 0.13616003, y: 0.000000017046135, z: -0.0000000023428217, w: 0.9906869}
   m_LocalPosition: {x: -1.841759, y: 2.15, z: -10.215996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1745,8 +1746,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 62123466}
   - {fileID: 1391303239}
+  - {fileID: 62123466}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
