@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpStrength = 10;
     private bool isInAction;
     private bool stop;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,34 +31,31 @@ public class PlayerMovement : MonoBehaviour
     {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.forward * speed * verticalInput * Time.fixedDeltaTime);
-        transform.Rotate(Vector3.up * rotationSpeed * horizontalInput * Time.fixedDeltaTime);
-        animator.SetFloat("Vertical Input", verticalInput);
-        if (verticalInput != 0)
+        if (!isDead)
         {
-            isInAction = true;
-            stop = false;
-        }
-
-        if (verticalInput == 0 && !stop)
-        {
-            isInAction = false;
-            stop = true;
+            transform.Translate(Vector3.forward * speed * verticalInput * Time.fixedDeltaTime);
+            transform.Rotate(Vector3.up * rotationSpeed * horizontalInput * Time.fixedDeltaTime);
+            animator.SetFloat("Vertical Input", verticalInput);
         }
     }
 
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.M))
-       {
-            StartCoroutine("ThrowWithDelay");
-       }
+        if (!isDead)
+        {
 
-       if (Input.GetKeyDown(KeyCode.Space))
-       {
-            animator.SetTrigger("Jumping");
-            rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
-       }
+
+            if (Input.GetKeyDown(KeyCode.M) && !isDead)
+            {
+                StartCoroutine("ThrowWithDelay");
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("Jumping");
+                rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+            }
+        }
     }
 
     IEnumerator ThrowWithDelay()
@@ -70,6 +68,16 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(projectilePrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             yield return new WaitForSeconds(1f);
             isInAction = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isDead = true;
+            animator.SetBool("isDead", true);
+            animator.SetBool("hasDied", true);
         }
     }
 }
