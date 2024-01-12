@@ -6,6 +6,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTF;
+    private GameManager gameManager;
     private Animator animator;
     private float moveSpeed = 2;
 
@@ -15,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player");
         animator = GetComponent<Animator>();
         playerTF = player.GetComponent<Transform>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         //animator.SetFloat("Move Speed", moveSpeed);
     }
 
@@ -30,6 +32,7 @@ public class EnemyBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Destroy(collision.gameObject);
+            gameManager.UpdateScore();
             Destroy(gameObject);
         }
     }
